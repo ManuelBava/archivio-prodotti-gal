@@ -32,9 +32,13 @@ export class AppComponent {
   ricerca() {
 
   }
-  rimuovi() {
-
+  rimuovi(p: Prodotto) {
+    let dto = new ProdottoDto();
+    dto.prodotto = p;
+    this.http.post<ListaProdottiDto>(this.url + "cancella", dto)
+      .subscribe(v => this.prodotti = v.listaProdotti);
   }
+
   sconto() {
 
   }

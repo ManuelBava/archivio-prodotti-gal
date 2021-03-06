@@ -37,7 +37,8 @@ public class ArchivioProdottiServiceImpl implements ArchvioProdottiService {
 
     @Override
     public ListaProdottiDto cancellazione(Prodotto prodotto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        prodottoRepository.delete(prodotto);
+        return aggiornaListaProdotti();
     }
 
     @Override
