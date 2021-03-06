@@ -1,0 +1,30 @@
+Archivio prodotti dei Galli
+<br><br>
+codice<input type="text" [(ngModel)]="prodotto.codice" placeholder="inserisci il codice">
+descrizione<input type="text" [(ngModel)]="prodotto.descrizione" placeholder="inserisci la descrizione">
+prezzo<input type="number" [(ngModel)]="prodotto.prezzo" placeholder="inserisci il prezzo">
+<button (click)="aggiungi()">Aggiungi prodotto</button>
+<br><br>
+<input type="text" [(ngModel)]="ricercaProdotto" placeholder="ricerca per prodotto">
+<button (click)="ricerca()">cerca</button>
+<br>
+<table>
+  <tr>
+    <th>Codice</th>
+    <th>Descrizione</th>
+    <th>Prezzo</th>
+    <th>IVA</th>
+  </tr>
+  <tr *ngFor="let p of prodotti">
+    <td> {{p.codice}} </td>
+    <td> {{p.descrizione}} </td>
+    <td> {{p.prezzo}} </td>
+    <td> {{IVA}} </td>
+    <td> 
+    <button (click)="rimuovi()">Rimuovi prodotto</button>
+    <button (click)="sconto()">Sconto 30%</button>
+  </td>
+  </tr>
+</table>
+<br><br>
+<button (click)="resetDb()">reset DB</button>
