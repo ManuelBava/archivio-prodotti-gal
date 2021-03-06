@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.sirfin.archivioProdottiGal.service.impl;
-
 
 import it.sirfin.archivioProdottiGal.dto.ListaProdottiDto;
 import it.sirfin.archivioProdottiGal.dto.ScontoDto;
@@ -16,16 +14,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArchivioProdottiServiceImpl implements ArchvioProdottiService{
+public class ArchivioProdottiServiceImpl implements ArchvioProdottiService {
+
+    @Autowired
+    ProdottoRepository prodottoRepository;
 
     @Override
     public ListaProdottiDto aggiornaListaProdotti() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaProdottiDto(prodottoRepository.findAll());
     }
 
     @Override
     public ListaProdottiDto inserimento(Prodotto prodotto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        prodottoRepository.save(prodotto);
+        return aggiornaListaProdotti();
     }
 
     @Override
@@ -43,6 +45,4 @@ public class ArchivioProdottiServiceImpl implements ArchvioProdottiService{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-    
 }

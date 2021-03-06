@@ -1,5 +1,5 @@
 import { Prodotto } from "./prodotto";
 
-export class ListeProdottiDto {
+export class ListaProdottiDto {
     listaProdotti: Prodotto[] = [];
 }

@@ -12,26 +12,26 @@ import java.util.List;
 
 public class ListaProdottiDto {
 
-    private List<Prodotto> listaAuto;
+    private List<Prodotto> listaProdotti;
 
     public ListaProdottiDto() {
     }
 
-    public ListaProdottiDto(List<Prodotto> listaAuto) {
-        this.listaAuto = listaAuto;
+    public ListaProdottiDto(List<Prodotto> listaProdotti) {
+        this.listaProdotti = listaProdotti;
     }
 
-    public List<Prodotto> getListaAuto() {
-        return listaAuto;
+    public List<Prodotto> getListaProdotti() {
+        return listaProdotti;
     }
 
-    public void setListaAuto(List<Prodotto> listaAuto) {
-        this.listaAuto = listaAuto;
+    public void setListaProdotti(List<Prodotto> listaProdotti) {
+        this.listaProdotti = listaProdotti;
     }
 
     @Override
     public String toString() {
-        return "ListaProdottiDto{" + "listaAuto=" + listaAuto + '}';
+        return "ListaProdottiDto{" + "listaProdotti=" + listaProdotti + '}';
     }     
     
 }

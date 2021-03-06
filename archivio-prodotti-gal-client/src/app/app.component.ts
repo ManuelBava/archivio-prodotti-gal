@@ -1,6 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ListaProdottiDto } from './lista-prodotti-dto';
 import { Prodotto } from './prodotto';
+import { ProdottoDto } from './prodotto-dto';
 
 @Component({
   selector: 'app-root',
@@ -12,26 +14,31 @@ export class AppComponent {
   ricercaProdotto = "";
   IVA = 0;
   prodotti: Prodotto[] = [];
+  url = "http://localhost:8080/";
 
-  constructor(private http: HttpClientModule) { 
+  constructor(private http: HttpClient) {
   }
 
-  aggiorna(){
+  aggiorna() {
 
   }
   aggiungi() {
-
-   }
+    let dto = new ProdottoDto();
+    dto.prodotto = this.prodotto;
+    this.http.post<ListaProdottiDto>(this.url + "inserisci", dto)
+      .subscribe(v => this.prodotti = v.listaProdotti);
+    this.prodotto = new Prodotto();
+  }
   ricerca() {
 
-   }
-  rimuovi() { 
+  }
+  rimuovi() {
 
   }
   sconto() {
 
-   }
-  resetDb() { 
+  }
+  resetDb() {
 
   }
 }
