@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ListaProdottiDto } from './lista-prodotti-dto';
 import { Prodotto } from './prodotto';
 import { ProdottoDto } from './prodotto-dto';
+import { ScontoDto } from './sconto-dto';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent {
   prodotto = new Prodotto();
   ricercaProdotto = "";
   IVA = 0;
+  calcolaSconto = 0;
   prodotti: Prodotto[] = [];
   url = "http://localhost:8080/";
 
@@ -39,8 +41,11 @@ export class AppComponent {
       .subscribe(v => this.prodotti = v.listaProdotti);
   }
 
-  sconto() {
-
+  sconto(prodotto: Prodotto) {
+    let dto = new ProdottoDto();
+    dto.prodotto = prodotto;
+    this.http.post<ScontoDto>(this.url + "sconto", dto)
+      .subscribe(v => this.calcolaSconto = v.importo);
   }
   resetDb() {
 

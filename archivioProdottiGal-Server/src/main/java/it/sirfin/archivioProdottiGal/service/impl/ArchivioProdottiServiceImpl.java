@@ -32,7 +32,8 @@ public class ArchivioProdottiServiceImpl implements ArchvioProdottiService {
 
     @Override
     public ScontoDto calcoloSconto(Prodotto prodotto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double sconto = prodotto.getPrezzo() * 0.7;
+        return new ScontoDto(sconto);
     }
 
     @Override

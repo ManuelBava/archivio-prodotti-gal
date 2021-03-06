@@ -36,7 +36,7 @@ public class ArchivioProdottiController {
         return archivioProdottiService.inserimento(dto.getProdotto());
     }
 
-    @RequestMapping("/calcola")
+    @RequestMapping("/sconto")
     @ResponseBody
     public ScontoDto calcoloSconto(@RequestBody ProdottoDto dto) {
         return archivioProdottiService.calcoloSconto(dto.getProdotto());
