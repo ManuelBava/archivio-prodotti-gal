@@ -29,6 +29,7 @@ export class AppComponent {
     dto.prodotto = this.prodotto;
     this.http.post<ListaProdottiDto>(this.url + "inserisci", dto)
       .subscribe(v => this.prodotti = v.listaProdotti);
+    this.IVA = this.prodotto.prezzo * 1.22;
     this.prodotto = new Prodotto();
   }
   ricerca() {
