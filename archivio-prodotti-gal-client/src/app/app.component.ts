@@ -33,7 +33,7 @@ export class AppComponent {
     this.prodotto = new Prodotto();
   }
   ricerca() {
-
+//da implementare
   }
   rimuovi(p: Prodotto) {
     let dto = new ProdottoDto();
