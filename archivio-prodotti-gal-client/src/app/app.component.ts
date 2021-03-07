@@ -20,10 +20,12 @@ export class AppComponent {
   url = "http://localhost:8080/";
 
   constructor(private http: HttpClient) {
+    this.aggiorna();
   }
 
   aggiorna() {
-
+    this.http.get<ListaProdottiDto>(this.url + "aggiorna")
+      .subscribe(v => this.prodotti = v.listaProdotti);
   }
   aggiungi() {
     let dto = new ProdottoDto();
@@ -39,7 +41,7 @@ export class AppComponent {
     criterio.stringa = this.ricercaProdotto;
     //Preparo la POST
     this.http.post<ListaProdottiDto>(this.url + "ricerca", criterio)
-    .subscribe(l => this.prodotti = l.listaProdotti);
+      .subscribe(l => this.prodotti = l.listaProdotti);
   }
   rimuovi(p: Prodotto) {
     let dto = new ProdottoDto();
@@ -54,9 +56,9 @@ export class AppComponent {
     this.http.post<ScontoDto>(this.url + "sconto", dto)
       .subscribe(v => this.calcolaSconto = v.sconto);
   }
-  
+
   resetDb() {
     this.http.get<ListaProdottiDto>(this.url + "reset")
-    .subscribe(r => this.prodotti = r.listaProdotti);
+      .subscribe(r => this.prodotti = r.listaProdotti);
   }
 }
