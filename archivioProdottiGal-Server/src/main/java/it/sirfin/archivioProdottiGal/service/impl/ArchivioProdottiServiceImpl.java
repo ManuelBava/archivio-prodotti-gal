@@ -44,13 +44,13 @@ public class ArchivioProdottiServiceImpl implements ArchvioProdottiService {
 
     @Override
     public ListaProdottiDto ricerca(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaProdottiDto(prodottoRepository.findByCodiceContainsOrDescrizioneContains(criterio, criterio));
     }
 
     @Override
     public ListaProdottiDto resetDB() {
-       prodottoRepository.deleteAllInBatch();
-       return aggiornaListaProdotti();
+        prodottoRepository.deleteAllInBatch();
+        return aggiornaListaProdotti();
     }
 
 }

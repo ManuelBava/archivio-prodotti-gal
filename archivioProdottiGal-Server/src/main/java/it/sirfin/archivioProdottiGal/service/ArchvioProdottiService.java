@@ -22,4 +22,6 @@ public interface ArchvioProdottiService {
     ListaProdottiDto cancellazione(Prodotto prodotto);            
             
     ListaProdottiDto ricerca(String criterio);
+    
+    ListaProdottiDto resetDB();
 }

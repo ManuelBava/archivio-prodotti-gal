@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.sirfin.archivioProdottiGal.controller;
 
+import it.sirfin.archivioProdottiGal.dto.CriterioRicercaDto;
 import it.sirfin.archivioProdottiGal.dto.ListaProdottiDto;
 import it.sirfin.archivioProdottiGal.dto.ProdottoDto;
 import it.sirfin.archivioProdottiGal.dto.ScontoDto;
@@ -21,15 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ArchivioProdottiController {
 
-   @Autowired
-   ArchvioProdottiService archivioProdottiService;
+    @Autowired
+    ArchvioProdottiService archivioProdottiService;
 
     @RequestMapping("/aggiorna")
     @ResponseBody
     public ListaProdottiDto aggiornaListaProdotti() {
         return archivioProdottiService.aggiornaListaProdotti();
     }
-    
+
     @RequestMapping("/inserisci")
     @ResponseBody
     public ListaProdottiDto inserimento(@RequestBody ProdottoDto dto) {
@@ -50,14 +50,14 @@ public class ArchivioProdottiController {
 
     @RequestMapping("/ricerca")
     @ResponseBody
-    public ListaProdottiDto ricerca(@RequestBody String criterio) {
-        return archivioProdottiService.ricerca(criterio);
+    public ListaProdottiDto ricerca(@RequestBody CriterioRicercaDto dto) {
+        return archivioProdottiService.ricerca(dto.getStringa());
     }
 
     @RequestMapping("/reset")
     @ResponseBody
     public ListaProdottiDto resetDB() {
-      return  archivioProdottiService.resetDB();      
+        return archivioProdottiService.resetDB();
     }
-    
+
 }
