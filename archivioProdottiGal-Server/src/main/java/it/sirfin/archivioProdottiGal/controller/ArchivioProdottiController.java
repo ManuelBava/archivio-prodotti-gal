@@ -6,6 +6,7 @@
 
 package it.sirfin.archivioProdottiGal.controller;
 
+import it.sirfin.archivioProdottiGal.dto.CriterioRicercaDto;
 import it.sirfin.archivioProdottiGal.dto.ListaProdottiDto;
 import it.sirfin.archivioProdottiGal.dto.ProdottoDto;
 import it.sirfin.archivioProdottiGal.dto.ScontoDto;
@@ -50,7 +51,7 @@ public class ArchivioProdottiController {
 
     @RequestMapping("/ricerca")
     @ResponseBody
-    public ListaProdottiDto ricerca(@RequestBody String criterio) {
-        return archivioProdottiService.ricerca(criterio);
+    public ListaProdottiDto ricerca(@RequestBody CriterioRicercaDto dto) {
+        return archivioProdottiService.ricerca(dto.getStringa());
     }
 }
