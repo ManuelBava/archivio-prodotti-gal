@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { CriterioRicercaDto } from './criterio-ricerca-dto';
 import { ListaProdottiDto } from './lista-prodotti-dto';
 import { Prodotto } from './prodotto';
 import { ProdottoDto } from './prodotto-dto';
@@ -17,7 +16,6 @@ export class AppComponent {
   IVA = 0;
   calcolaSconto = 0;
   prodotti: Prodotto[] = [];
-  prodottiFiltrata: Prodotto[] =[];
   url = "http://localhost:8080/";
 
   constructor(private http: HttpClient) {
@@ -35,12 +33,7 @@ export class AppComponent {
     this.prodotto = new Prodotto();
   }
   ricerca() {
-    //prepariam i dati 
-    let criterio = new CriterioRicercaDto();
-    criterio.stringa = this.ricercaProdotto;
-    //Preparo la POST
-    this.http.post<ListaProdottiDto>(this.url + "ricerca", criterio)
-    .subscribe(l => this.prodotti = l.listaProdotti);
+//da implementare
   }
   rimuovi(p: Prodotto) {
     let dto = new ProdottoDto();
@@ -53,7 +46,7 @@ export class AppComponent {
     let dto = new ProdottoDto();
     dto.prodotto = prodotto;
     this.http.post<ScontoDto>(this.url + "sconto", dto)
-      .subscribe(v => this.calcolaSconto = v.sconto);
+      .subscribe(v => this.calcolaSconto = v.importo);
   }
   
   resetDb() {

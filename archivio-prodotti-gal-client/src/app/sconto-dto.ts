@@ -1,3 +1,3 @@
 export class ScontoDto {
-    sconto = 0;
+    importo = 0;
 }

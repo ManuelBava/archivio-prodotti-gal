@@ -44,7 +44,7 @@ public class ArchivioProdottiServiceImpl implements ArchvioProdottiService {
 
     @Override
     public ListaProdottiDto ricerca(String criterio) {
-        return new ListaProdottiDto(prodottoRepository.findByCodiceContainsOrDescrizioneContains(criterio, criterio));
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
