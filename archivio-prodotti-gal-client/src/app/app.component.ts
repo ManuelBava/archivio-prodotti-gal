@@ -55,7 +55,9 @@ export class AppComponent {
     this.http.post<ScontoDto>(this.url + "sconto", dto)
       .subscribe(v => this.calcolaSconto = v.sconto);
   }
+  
   resetDb() {
-
+    this.http.get<ListaProdottiDto>(this.url + "reset")
+    .subscribe(r => this.prodotti = r.listaProdotti);
   }
 }

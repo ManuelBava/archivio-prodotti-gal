@@ -21,12 +21,10 @@ prezzo<input type="number" [(ngModel)]="prodotto.prezzo" placeholder="inserisci 
     <td> {{p.prezzo}} </td>
     <td> {{IVA}} </td>
     <td> 
-    <button (click)="rimuovi(p)">Rimuovi prodotto</button>
-    <button (click)="sconto(p)">Sconto 30%</button>
+    <button (click)="rimuovi()">Rimuovi prodotto</button>
+    <button (click)="sconto()">Sconto 30%</button>
   </td>
   </tr>
 </table>
-<br><br>
-Calcolo sconto: &euro; {{calcolaSconto}}
 <br><br>
 <button (click)="resetDb()">reset DB</button>

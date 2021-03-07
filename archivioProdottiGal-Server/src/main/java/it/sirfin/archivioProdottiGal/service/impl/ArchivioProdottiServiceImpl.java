@@ -47,4 +47,10 @@ public class ArchivioProdottiServiceImpl implements ArchvioProdottiService {
         return new ListaProdottiDto(prodottoRepository.findByCodiceContainsOrDescrizioneContains(criterio, criterio));
     }
 
+    @Override
+    public ListaProdottiDto resetDB() {
+       prodottoRepository.deleteAllInBatch();
+       return aggiornaListaProdotti();
+    }
+
 }

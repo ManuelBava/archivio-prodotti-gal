@@ -54,4 +54,11 @@ public class ArchivioProdottiController {
     public ListaProdottiDto ricerca(@RequestBody CriterioRicercaDto dto) {
         return archivioProdottiService.ricerca(dto.getStringa());
     }
+
+    @RequestMapping("/reset")
+    @ResponseBody
+    public ListaProdottiDto resetDB() {
+      return  archivioProdottiService.resetDB();      
+    }
+    
 }
