@@ -18,8 +18,8 @@ prezzo<input type="number" [(ngModel)]="prodotto.prezzo" placeholder="inserisci 
   <tr *ngFor="let p of prodotti">
     <td> {{p.codice}} </td>
     <td> {{p.descrizione}} </td>
-    <td> {{p.prezzo}} </td>
-    <td> {{IVA}} </td>
+    <td> {{p.prezzo}} &euro; </td>
+    <td> {{p.iva}} &euro; </td>
     <td> 
     <button (click)="rimuovi(p)">Rimuovi prodotto</button>
     <button (click)="sconto(p)">Sconto 30%</button>
@@ -27,6 +27,6 @@ prezzo<input type="number" [(ngModel)]="prodotto.prezzo" placeholder="inserisci 
   </tr>
 </table>
 <br><br>
-Calcolo sconto: &euro; {{calcolaSconto}}
+Calcolo sconto: {{calcolaSconto}} &euro;
 <br><br>
 <button (click)="resetDb()">reset DB</button>

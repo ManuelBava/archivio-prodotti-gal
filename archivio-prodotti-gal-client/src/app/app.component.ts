@@ -23,29 +23,47 @@ export class AppComponent {
     this.aggiorna();
   }
 
+  calcolaIva() {
+    for (let p of this.prodotti) {
+      p.iva = p.prezzo * 1.22;
+    }
+  }
+
   aggiorna() {
     this.http.get<ListaProdottiDto>(this.url + "aggiorna")
-      .subscribe(v => this.prodotti = v.listaProdotti);
+      .subscribe(v => {
+        this.prodotti = v.listaProdotti;
+        this.calcolaIva();
+      });
   }
+
   aggiungi() {
     let dto = new ProdottoDto();
     dto.prodotto = this.prodotto;
     this.http.post<ListaProdottiDto>(this.url + "inserisci", dto)
-      .subscribe(v => this.prodotti = v.listaProdotti);
-    this.IVA = this.prodotto.prezzo * 1.22;
+      .subscribe(v => {
+        this.prodotti = v.listaProdotti;
+        this.calcolaIva();
+      });
     this.prodotto = new Prodotto();
   }
+
   ricerca() {
     //prepariam i dati 
     let criterio = new CriterioRicercaDto();
     criterio.stringa = this.ricercaProdotto;
     //Preparo la POST
     this.http.post<ListaProdottiDto>(this.url + "ricerca", criterio)
-      .subscribe(l => this.prodotti = l.listaProdotti);
+      .subscribe(l => {
+        this.prodotti = l.listaProdotti;
+        this.calcolaIva();
+      });
   }
+  
   rimuovi(p: Prodotto) {
     let dto = new ProdottoDto();
     dto.prodotto = p;
+    console.log(p);
     this.http.post<ListaProdottiDto>(this.url + "cancella", dto)
       .subscribe(v => this.prodotti = v.listaProdotti);
   }
